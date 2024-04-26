@@ -1,0 +1,30 @@
+CREATE TABLE nftmarket_mints(
+    blockchain VARCHAR(255),
+    project  VARCHAR(255),
+    "version" VARCHAR(255),
+    block_timec DATETIME,
+    token_id uint256,
+    "collection" VARCHAR(255),
+    amount_usd MONEY,
+    token_standard VARCHAR(255),
+    trade_type VARCHAR(255),
+    number_of_items uint256,
+    trade_category VARCHAR(255),
+    evt_type VARCHAR(5),
+    seller VARCHAR(255),
+    buyer VARCHAR(255),
+    amount_original double,
+    amount_raw uint256,
+    currency_symbol VARCHAR(255),
+    currency_contract VARCHAR(255),
+    nft_contract_address VARCHAR(255),
+    project_contract_address VARCHAR(255),
+    aggregator_name VARCHAR(255),
+    aggregator_address VARCHAR(255),
+    block_number bigint,
+    tx_from VARCHAR(255),
+    tx_to VARCHAR(255),
+    unique_trade_id VARCHAR(255)
+
+
+)
