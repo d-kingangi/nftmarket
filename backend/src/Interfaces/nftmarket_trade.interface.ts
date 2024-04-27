@@ -20,7 +20,7 @@ export interface nftmarket_trade{
     currency_symbol: string;
     nft_contract_address: string;
     project_contract_address: string;
-    aggregator_name: string;,
+    aggregator_name: string;
     aggregator_address: string;
     block_number: number;
     tx_hash: string;
