@@ -1,90 +1,34 @@
 CREATE TABLE nftmarket_fees(
-    blockchain string?,
-project string?,
-"version" string?,
-
-block_time
-timestamp?
-
-token_id
-string?
-
-collection
-string?
-
-platform_fee_amount_raw
-double?
-
-platform_fee_amount
-double?
-
-platform_fee_amount_usd
-double?
-
-platform_fee_percentage
-double?
-
-royalty_fee_amount_raw
-double?
-
-royalty_fee_amount
-double?
-
-royalty_fee_amount_usd
-double?
-
-royalty_fee_percentage
-double?
-
-royalty_fee_receive_address
-string?
-
-royalty_fee_currency_symbol
-string?
-
-token_standard
-string?
-
-trade_type
-string?
-
-number_of_items
-decimal(38,0)?
-
-trade_category
-string?
-
-evt_type
-string?
-
-seller
-string?
-
-buyer
-string?
-
-nft_contract_address
-string?
-
-project_contract_address
-string?
-
-aggregator_name
-VARCHAR(255)
-
-aggregator_address
-VARCHAR(255)
-
-block_number
-bigint
-
-tx_hash
-VARCHAR(255)
-
-tx_from
-VARCHAR(255)
-
-tx_to VARCHAR(255),
+blockchain VARCHAR(255),
+project  VARCHAR(255),
+"version" VARCHAR(255),
+block_time DATETIME,
+token_id uint256,
+"collection" VARCHAR(255),
+platform_fee_amount_raw uint256,
+platform_fee_amount DOUBLE,
+platform_fee_amount_usd DOUBLE,
+platform_fee_percentage DOUBLE,
+royalty_fee_amount_raw uint256,
+royalty_fee_amount DOUBLE,
+royalty_fee_amount_usd DOUBLE,
+royalty_fee_percentage DOUBLE,
+royalty_fee_receive_address VARCHAR(255),
+royalty_fee_currency_symbol VARCHAR(255).
+token_standard VARCHAR(255),
+trade_type VARCHAR(255),
+number_of_items uint256,
+trade_category VARCHAR(255),
+evt_type VARCHAR(5),
+seller VARCHAR(255),
+buyer VARCHAR(255),
+nft_contract_address VARCHAR(255),
+project_contract_address VARCHAR(255),
+aggregator_name VARCHAR(255),
+aggregator_address VARCHAR(255),
+block_number bigint,
+tx_hash VARCHAR(255),
+tx_from VARCHAR(255),
+tx_to VARCHAR(255)
 unique_trade_id VARCHAR(255)
-
 )

@@ -1,82 +1,29 @@
-foundation.burns
-
-blockchain
-string?
-
-project
-string?
-
-version
-string?
-
-block_time
-timestamp?
-
-token_id
-string?
-
-collection
-string?
-
-amount_usd
-double?
-
-token_standard
-string?
-
-trade_type
-string?
-
-number_of_items
-decimal(38,0)?
-
-trade_category
-string?
-
-evt_type
-string?
-
-seller
-string?
-
-buyer
-string?
-
-amount_original
-double?
-
-amount_raw
-decimal(38,0)?
-
-currency_symbol
-string?
-
-currency_contract
-string?
-
-nft_contract_address
-string?
-
-project_contract_address
-string?
-
-aggregator_name
-string?
-
-aggregator_address
-string?
-
-block_number
-long?
-
-tx_hash
-string?
-
-tx_from
-string?
-
-tx_to
-string?
-
-unique_trade_id
-string?
+CREATE TABLE nftmarket_burns(
+    blockchain VARCHAR(255),
+    project  VARCHAR(255),
+    "version" VARCHAR(255),
+    block_time DATETIME,
+    token_id uint256,
+    "collection" VARCHAR(255),
+    amount_usd MONEY,
+    token_standard VARCHAR(255),
+    trade_type VARCHAR(255),
+    number_of_items uint256,
+    trade_category VARCHAR(255),
+    evt_type VARCHAR(5),
+    seller VARCHAR(255),
+    buyer VARCHAR(255),
+    amount_original double,
+    amount_raw uint256,
+    currency_symbol VARCHAR(255),
+    currency_contract VARCHAR(255),
+    nft_contract_address VARCHAR(255),
+    project_contract_address VARCHAR(255),
+    aggregator_name VARCHAR(255),
+    aggregator_address VARCHAR(255),
+    block_number bigint,
+    tx_hash VARCHAR(255),
+    tx_from VARCHAR(255),
+    tx_to VARCHAR(255),
+    unique_trade_id VARCHAR(255)
+)
