@@ -1,7 +1,7 @@
 CREATE TABLE nftmarket_users(
     user_id VARCHAR(255) PRIMARY KEY,
     wallet_address VARCHAR(255),
-    profileImg VARCHAR(255),
+    profile_img VARCHAR(255),
     user_name VARCHAR(255),
     email VARCHAR(255) UNIQUE,
     password VARCHAR(255),
