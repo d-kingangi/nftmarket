@@ -2,7 +2,7 @@ CREATE TABLE nftmarket_mints(
     blockchain VARCHAR(255),
     project  VARCHAR(255),
     "version" VARCHAR(255),
-    block_timec DATETIME,
+    block_time DATETIME,
     token_id uint256,
     "collection" VARCHAR(255),
     amount_usd MONEY,
