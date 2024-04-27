@@ -23,7 +23,7 @@ export const new_nftmarket_mint = joi.object({
     project_contract_address: joi.string().required(),
     aggregator_name: joi.string().required(),
     aggregator_address: joi.string().required(),
-    block_number: joi.number().required(),,
+    block_number: joi.number().required(),
     tx_from: joi.string().required(),
     tx_to: joi.string().required(),
     unique_trade_id: joi.string().required(),
