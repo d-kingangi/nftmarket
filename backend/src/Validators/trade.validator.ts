@@ -36,6 +36,5 @@ export const new_nftmarket_trade = joi.object({
     royalty_fee_currency_symbol: joi.string().required(),
     royalty_fee_amount_raw: joi.string().required(),
     royalty_fee_amount: joi.string().required(),
-    royalty_fee_amount_usd: joi.number().required(),
-    unique_trade_id: joi.string().required(),
+    royalty_fee_amount_usd: joi.number().required()
 })

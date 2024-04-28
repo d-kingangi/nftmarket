@@ -35,5 +35,5 @@ export interface nftmarket_trade{
     royalty_fee_amount_raw: number;
     royalty_fee_amount: number;
     royalty_fee_amount_usd: number;
-    unique_trade_id: string;
+    // unique_trade_id: string;
 }

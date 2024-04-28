@@ -1,11 +1,12 @@
 CREATE TABLE nftmarket_trades(
+    unique_trade_id VARCHAR(255)
     blockchain VARCHAR(255),
     project  VARCHAR(255),
     "version" VARCHAR(255),
     block_date  DATETIME,
     block_month DATETIME,
     block_time DATETIME,
-    token_id uint256,
+    token_id VARCHAR(255),
     "collection" VARCHAR(255),
     amount_usd MONEY,
     token_standard VARCHAR(255),
@@ -26,7 +27,7 @@ CREATE TABLE nftmarket_trades(
     tx_hash VARCHAR(255),
     tx_from VARCHAR(255),
     tx_to VARCHAR(255),
-    platform_fee_amount_raw uint256,
+    platform_fee_amount_raw BigInt,
     platform_fee_amount DOUBLE,
     platform_fee_amount_usd DOUBLE,
     platform_fee_percentage DOUBLE,
@@ -34,6 +35,5 @@ CREATE TABLE nftmarket_trades(
     royalty_fee_currency_symbol VARCHAR(255).
     royalty_fee_amount_raw uint256,
     royalty_fee_amount DOUBLE,
-    royalty_fee_amount_usd DOUBLE,
-    unique_trade_id VARCHAR(255)
+    royalty_fee_amount_usd MONEY,
 )
