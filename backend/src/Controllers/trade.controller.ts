@@ -13,7 +13,7 @@ export const create_nftmarket_trade = async (req: Request, res: Response) => {
                 tx_hash, tx_from, tx_to, platform_fee_amount_raw, platform_fee_amount, platform_fee_amount_usd, platform_fee_percentage, royalty_fee_receive_address, royalty_fee_currency_symbol, 
                 royalty_fee_amount_raw, royalty_fee_amount, royalty_fee_amount_usd} = req.body
 
-        const existing_trade = await check_existing_trade ()
+        const existing_trade = await check_existing_trade()
 
         if(existing_trade){
             return res.json({ error: " You've have an existing trade pending" });
@@ -69,6 +69,93 @@ export const create_nftmarket_trade = async (req: Request, res: Response) => {
                 return res.json({ error: "Failed to request trade" });
             }
         }
+        
+    } catch (error) {
+        return res.json({ error });
+    }
+}
+
+async function check_existing_trade(buyer:string, nft_contract_address: string, collection: string, project:string): Promise<boolean> {
+
+    const pool = await mssql.connect(sqlConfig);
+
+    if (pool.connected){
+        const result = (await pool.request()
+        .input("buyer", mssql.VarChar, buyer)
+        .input("project", mssql.VarChar, project)
+        .input("nft_contract_address", mssql.VarChar, nft_contract_address)
+        .input("collection", mssql.VarChar, collection)
+        .execute('check_existing_trade')).recordset[0].count;
+
+        return result > 0;
+    } else {
+        throw new Error("Failed to establish database connection");
+    }
+}
+
+export const get_nftmarket_trades_for_project = async (req: Request, res: Response) => {
+    try {
+        const {project} = req.params
+
+        const pool = await mssql.connect(sqlConfig);
+
+        const result = await pool.request()
+            .input("project", mssql.VarChar, project)
+            .execute('get_nftmarket_trades_for_project');
+
+        return res.json({
+            applications: result.recordset
+        });
+    } catch (error) {
+        
+    }
+}
+
+export const get_nftmarket_trades_for_collection = async (req: Request, res: Response) => {
+    try {
+        const {collection} = req.params
+
+        const pool = await mssql.connect(sqlConfig);
+
+        const result = await pool.request()
+            .input("project", mssql.VarChar, collection)
+            .execute('get_nftmarket_trades_for_collection');
+
+        return res.json({
+            applications: result.recordset
+        });
+    } catch (error) {
+        return res.json({ error }); 
+    }
+}
+
+export const update_nftmarket_trade = async (req: Request, res: Response) => {
+    try {
+        const { unique_trade_id} = req.body;
+
+        const pool = await mssql.connect(sqlConfig);
+
+        await pool.request()
+            .input("unique_trade_id", mssql.VarChar, unique_trade_id)
+            .execute('update_nftmarket_trade');
+
+        return res.json({ message: 'Trade updated successfully' });
+    } catch (error) {
+        return res.json({ error });
+    }
+}
+
+export const delete_nftmarket_trade = async (req: Request, res: Response) => {
+    try {
+        const { unique_trade_id } = req.params;
+
+        const pool = await mssql.connect(sqlConfig)
+
+        await pool.request()
+            .input("unique_trade_id", mssql.VarChar, unique_trade_id)
+            .execute('delete_nftmarket_trade');
+
+        return res.json({ message: 'Trade deleted successfully' });
         
     } catch (error) {
         return res.json({ error });
