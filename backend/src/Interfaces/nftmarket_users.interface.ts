@@ -6,6 +6,7 @@ export interface nftmarket_user{
     email: string;
     location : string;
     phone: string;
+    password: string;
 }
 
 export interface login_nftmarket_user{

@@ -8,7 +8,7 @@ express
 joi 
 jsonwebtoken 
 mssql 
-odemon 
+nodemon 
 supertest 
 uuid 
 cors 
