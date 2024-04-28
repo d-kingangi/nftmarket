@@ -87,14 +87,14 @@ export const update_nftmarket_user = async (req: Request, res: Response) => {
         const pool = await mssql.connect(sqlConfig)
 
         let result = await(await pool.request()
-        .input("user_id", mssql.VarChar, )
-        .input("wallet_address", mssql.VarChar, )
-        .input("profile_img", mssql.VarChar, )
-        .input("user_name", mssql.VarChar, )
-        .input("email", mssql.VarChar, )
-        .input("location", mssql.VarChar, )
-        .input("phone", mssql.VarChar, )
-        .input("password", mssql.VarChar, )
+        .input("user_id", mssql.VarChar, user_id)
+        .input("wallet_address", mssql.VarChar, wallet_address)
+        .input("profile_img", mssql.VarChar, profile_img)
+        .input("user_name", mssql.VarChar, user_name)
+        .input("email", mssql.VarChar, email)
+        .input("location", mssql.VarChar, location)
+        .input("phone", mssql.VarChar, phone)
+        .input("password", mssql.VarChar, password)
         .execute('create_nftmarket_user')).rowsAffected
 
         console.log(result);
@@ -104,7 +104,7 @@ export const update_nftmarket_user = async (req: Request, res: Response) => {
         })
 
     } catch (error) {
-        
+        return res.json({error})
     }
 }
 

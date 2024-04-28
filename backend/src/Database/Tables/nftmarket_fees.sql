@@ -1,4 +1,5 @@
 CREATE TABLE nftmarket_fees(
+unique_trade_id VARCHAR(255),
 blockchain VARCHAR(255),
 project  VARCHAR(255),
 "version" VARCHAR(255),
@@ -30,5 +31,4 @@ block_number bigint,
 tx_hash VARCHAR(255),
 tx_from VARCHAR(255),
 tx_to VARCHAR(255)
-unique_trade_id VARCHAR(255)
 )

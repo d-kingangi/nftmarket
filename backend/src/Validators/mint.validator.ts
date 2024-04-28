@@ -1,6 +1,7 @@
 import joi from "joi";
 
 export const new_nftmarket_mint = joi.object({
+    // unique_trade_id: joi.string().required(),
     blockchain: joi.string().required(),
     project:  joi.string().required(),
     version: joi.string().required(),
@@ -24,7 +25,7 @@ export const new_nftmarket_mint = joi.object({
     aggregator_name: joi.string().required(),
     aggregator_address: joi.string().required(),
     block_number: joi.number().required(),
+    tx_hash: joi.number().required(),
     tx_from: joi.string().required(),
-    tx_to: joi.string().required(),
-    unique_trade_id: joi.string().required(),
+    tx_to: joi.string().required()
 })

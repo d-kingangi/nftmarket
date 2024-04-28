@@ -1,4 +1,5 @@
 export interface nftmarket_mint{
+    unique_mint_id: string;
     blockchain: string;
     project: string;
     version: string;
@@ -22,7 +23,7 @@ export interface nftmarket_mint{
     aggregator_name: string;
     aggregator_address: string;
     block_number: number;
+    tx_hash: string;
     tx_from: string;
-    tx_to: string;
-    unique_trade_id: string; 
+    tx_to: string; 
 }

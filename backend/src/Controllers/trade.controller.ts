@@ -61,6 +61,7 @@ export const create_nftmarket_trade = async (req: Request, res: Response) => {
             .input("royalty_fee_amount_raw", mssql.Double, royalty_fee_amount_raw)
             .input("royalty_fee_amount", mssql.Double, royalty_fee_amount)
             .input("royalty_fee_amount_usd", mssql.Money, royalty_fee_amount_usd)
+            .execute('create_nftmarket_trade ')
             ).rowsAffected
 
             if (result[0] > 0) {
@@ -107,7 +108,7 @@ export const get_nftmarket_trades_for_project = async (req: Request, res: Respon
             applications: result.recordset
         });
     } catch (error) {
-        
+        return res.json({error})
     }
 }
 
@@ -136,7 +137,42 @@ export const update_nftmarket_trade = async (req: Request, res: Response) => {
         const pool = await mssql.connect(sqlConfig);
 
         await pool.request()
-            .input("unique_trade_id", mssql.VarChar, unique_trade_id)
+        .input("unique_trade_id:", mssql.VarChar, unique_trade_id)
+        .input("blockchain", mssql.VarChar, blockchain)
+        .input("project", mssql.VarChar, project)
+        .input("version", mssql.VarChar, version)
+        .input("block_date", mssql.DATETIME, block_date)
+        .input("block_month", mssql.DATETIME, block_month)
+        .input("block_time", mssql.DATETIME, block_time)
+        .input("token_id", mssql.VarChar, token_id)
+        .input("collection", mssql.VarChar, collection)
+        .input("amount_usd", mssql.MONEY, amount_usd)
+        .input("token_standard", mssql.VarChar, token_standard)
+        .input("trade_type", mssql.VarChar, trade_type)
+        .input("number_of_items", mssql.BigInt, number_of_items)
+        .input("evt_type", mssql.VarChar, evt_type)
+        .input("seller", mssql.VarChar, seller)
+        .input("buyer", mssql.VarChar, buyer)
+        .input("amount_original", mssql.BigInt, amount_original)
+        .input("amount_raw", mssql.BigInt, amount_raw)
+        .input("currency_symbol", mssql.VarChar, currency_symbol)
+        .input("nft_contract_address", mssql.VarChar, nft_contract_address)
+        .input("project_contract_address", mssql.VarChar, project_contract_address)
+        .input("aggregator_name", mssql.VarChar, aggregator_name)
+        .input("aggregator_address", mssql.VarChar, aggregator_address)
+        .input("block_number", mssql.BigInt, block_number)
+        .input("tx_hash", mssql.VarChar, tx_hash)
+        .input("tx_from", mssql.VarChar, tx_from)
+        .input("tx_to", mssql.VarChar, tx_to)
+        .input("platform_fee_amount_raw", mssql.BigInt, platform_fee_amount_raw)
+        .input("platform_fee_amount", mssql.BigInt, platform_fee_amount)
+        .input("platform_fee_amount_usd", mssql.Money, platform_fee_amount_usd)
+        .input("platform_fee_percentage", mssql.Double, platform_fee_percentage)
+        .input("royalty_fee_receive_address", mssql.VarChar, royalty_fee_receive_address)
+        .input("royalty_fee_currency_symbol", mssql.VarChar, royalty_fee_currency_symbol)
+        .input("royalty_fee_amount_raw", mssql.Double, royalty_fee_amount_raw)
+        .input("royalty_fee_amount", mssql.Double, royalty_fee_amount)
+        .input("royalty_fee_amount_usd", mssql.Money, royalty_fee_amount_usd)
             .execute('update_nftmarket_trade');
 
         return res.json({ message: 'Trade updated successfully' });
