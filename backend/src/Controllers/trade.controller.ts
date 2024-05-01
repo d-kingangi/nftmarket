@@ -119,7 +119,7 @@ export const get_nftmarket_trades_for_collection = async (req: Request, res: Res
         const pool = await mssql.connect(sqlConfig);
 
         const result = await pool.request()
-            .input("project", mssql.VarChar, collection)
+            .input("collection", mssql.VarChar, collection)
             .execute('get_nftmarket_trades_for_collection');
 
         return res.json({
@@ -127,6 +127,24 @@ export const get_nftmarket_trades_for_collection = async (req: Request, res: Res
         });
     } catch (error) {
         return res.json({ error }); 
+    }
+}
+
+export const get_nftmarket_trades_for_buyer = async (req: Request, res: Response) => {
+    try {
+        const {buyer} = req.params
+
+        const pool = await mssql.connect(sqlConfig);
+
+        const result = await pool.request()
+        .input("buyer", mssql.VarChar, buyer)
+        .execute('get_nftmarket_trades_for_buyer')
+
+        return res.json({
+            applications: result.recordset
+        });
+    } catch (error) {
+        return res.json({ error });
     }
 }
 
