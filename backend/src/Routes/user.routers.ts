@@ -9,3 +9,5 @@ userRouter.get('/', get_all_nftmarket_users)
 userRouter.get('/user_id', get_single_nftmarket_user)
 userRouter.put('/user_id', verifyToken, update_nftmarket_user)
 userRouter.delete('/delete/', verifyToken, delete_nftmarket_user)
+
+export default userRouter
