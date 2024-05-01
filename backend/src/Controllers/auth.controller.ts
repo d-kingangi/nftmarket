@@ -4,7 +4,7 @@ import mssql from "mssql";
 import jwt from "jsonwebtoken";
 import { sqlConfig } from "../Config/sql.config"
 import { loginUserSchema } from "../Validators/auth.validator";
-import { ExtendedUserRequest } from "../Middlewares/verifyToken";
+import { ExtendedUserRequest } from "../Middlewares/token";
 
 export const login_nftmarket_user = async (req: Request, res: Response) => {
     try {
