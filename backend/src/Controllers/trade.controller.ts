@@ -148,7 +148,7 @@ export const get_nftmarket_trades_for_buyer = async (req: Request, res: Response
     }
 }
 
-export const get_single_nftmarke_trade = async function name(req: Request, res: Response) {
+export const get_single_nftmarket_trade = async function name(req: Request, res: Response) {
     try {
         const {unique_trade_id} = req.params
 
