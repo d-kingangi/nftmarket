@@ -105,7 +105,7 @@ export const get_nftmarket_trades_for_project = async (req: Request, res: Respon
             .execute('get_nftmarket_trades_for_project');
 
         return res.json({
-            applications: result.recordset
+            trades: result.recordset
         });
     } catch (error) {
         return res.json({error})
@@ -123,7 +123,7 @@ export const get_nftmarket_trades_for_collection = async (req: Request, res: Res
             .execute('get_nftmarket_trades_for_collection');
 
         return res.json({
-            applications: result.recordset
+            trades: result.recordset
         });
     } catch (error) {
         return res.json({ error }); 
@@ -141,14 +141,30 @@ export const get_nftmarket_trades_for_buyer = async (req: Request, res: Response
         .execute('get_nftmarket_trades_for_buyer')
 
         return res.json({
-            applications: result.recordset
+            trades: result.recordset
         });
     } catch (error) {
         return res.json({ error });
     }
 }
 
-export const get_
+export const get_single_nftmarke_trade = async function name(req: Request, res: Response) {
+    try {
+        const {unique_trade_id} = req.params
+
+        const pool = await mssql.connect(sqlConfig)
+
+        const result = await pool.request()
+        .input("unique_trade_id", mssql.VarChar, unique_trade_id)
+        .execute('get_single_nftmarke_trade')
+
+        return res.json({
+            trades: result.recordset
+        });
+    } catch (error) {
+        return res.json({ error });
+    }
+}
 
 export const update_nftmarket_trade = async (req: Request, res: Response) => {
     try {
