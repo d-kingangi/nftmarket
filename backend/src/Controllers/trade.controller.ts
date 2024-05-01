@@ -148,6 +148,8 @@ export const get_nftmarket_trades_for_buyer = async (req: Request, res: Response
     }
 }
 
+export const get_
+
 export const update_nftmarket_trade = async (req: Request, res: Response) => {
     try {
         const { unique_trade_id} = req.body;
