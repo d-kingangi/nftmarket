@@ -58,7 +58,7 @@ describe('Account created successfully', ()=>{
 
 //test for controller function get_all_nftmarket_users()
 
-describe('Gets a single user', ()=>{
+describe('Gets all users', ()=>{
 
     let res: any
     let req: any
@@ -132,3 +132,57 @@ describe('Gets a single user', ()=>{
 
 
 //test for controller function get_single_nftmarket_user()
+
+describe('Gets single user', ()=>{
+
+    let req: any
+    let res: any
+
+    beforeEach(()=>{
+        req = {
+            params: {
+                id: '353545-43495835-458347575', 
+            },
+        };
+
+        res = {
+            json: jest.fn(),
+            status: jest.fn().mockReturnThis(),
+        };
+    })
+
+    it('Successful fetch for a single user', async () =>{
+        const mockedResult = [
+            {
+                user_id: 'user_123',
+                wallet_address: 'user_123',
+                profile_img: 'user_123',
+                user_name: 'user_123',
+                email: 'user_123',
+                location : 'user_123',
+                phone: 'user_123',
+                password: 'user_123'
+            }
+        ]
+
+        const mockedInput = jest.fn().mockReturnThis()
+
+        const mockedExecute = jest.fn().mockResolvedValue({ recordset: mockedResult [0] })
+
+        const mockedRequest ={
+            input: mockedInput,
+            execute: mockedExecute
+        }
+
+        const mockedPool ={
+            request: jest.fn().mockReturnValue(mockedRequest)
+        }
+
+        jest.spyOn(mssql, 'connect').mockResolvedValue(mockedPool as never)
+
+        await get_single_nftmarket_user(req as any, res)
+
+        expect(res.json).toHaveBeenCalledWith({ error: "An error occurred while fetching member." });
+
+    })
+})
