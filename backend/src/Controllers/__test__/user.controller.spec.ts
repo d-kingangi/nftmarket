@@ -141,7 +141,7 @@ describe('Gets single user', ()=>{
     beforeEach(()=>{
         req = {
             params: {
-                id: '353545-43495835-458347575', 
+                user_id: '353545-43495835-458347575', 
             },
         };
 
@@ -186,3 +186,55 @@ describe('Gets single user', ()=>{
 
     })
 })
+
+//test for controller function  update_nftmarket_user()
+
+describe('Account updated successfully', ()=>{
+
+    let res: any
+    let req: any
+
+    beforeEach(()=>{
+        req={
+            params:{
+                user_id : '353545-43495835-458347575'
+            }
+        }
+        res={
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn().mockReturnThis()
+        }
+    })
+
+    it('Successfully updates account'. async () => {
+        const req={
+            body:{
+                username: "anyciaa"
+            }
+        }
+
+        const mockedInput = jest.fn().mockReturnThis() 
+
+        const mockedExecute = jest.fn().mockResolvedValue({rowsAffected: [1]})
+
+        const mockedRequest ={
+            input: mockedInput,
+            execute: mockedExecute
+        }
+
+        const mockedPool ={
+            request: jest.fn().mockReturnValue(mockedRequest)
+        }
+
+        await update_nftmarket_user(req as any, res);
+
+        jest.spyOn(mssql, 'connect').mockResolvedValue(mockedPool as never)
+
+        expect(res.json).toHaveBeenCalledWith({message: "Talent updated successfully"})
+
+
+    })
+})
+
+
+//test for controller function delete_nftmarket_user()
