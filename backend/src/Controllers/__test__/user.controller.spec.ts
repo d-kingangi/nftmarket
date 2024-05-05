@@ -230,7 +230,7 @@ describe('Account updated successfully', ()=>{
 
         jest.spyOn(mssql, 'connect').mockResolvedValue(mockedPool as never)
 
-        expect(res.json).toHaveBeenCalledWith({message: "Talent updated successfully"})
+        expect(res.json).toHaveBeenCalledWith({message: "Account updated successfully"})
 
 
     })
@@ -238,3 +238,46 @@ describe('Account updated successfully', ()=>{
 
 
 //test for controller function delete_nftmarket_user()
+
+describe('Account deleted succesfully', ()=>{
+
+    let res: any
+    let req: any
+
+    beforeEach(()=>{
+
+        req={
+            params:{
+                user_id: '353545-43495835-458347575'
+            }
+        }
+        res={
+            status: jest.fn().mockReturnThis(),
+            json: jest.fn().mockReturnThis()
+        }
+    })
+
+    it('Successsfully deletes account', async()=>{
+        
+        const req={body:{}}
+
+        const mockedInput = jest.fn().mockReturnThis()
+
+        const mockedExecute = jest.fn().mockResolvedValue({rowsAffected: [1]})
+
+        const mockedRequest ={
+            input: mockedInput,
+            execute: mockedExecute
+        }
+
+        const mockedPool ={
+            request: jest.fn().mockReturnValue(mockedRequest)
+        }
+
+        jest.spyOn(mssql, 'connect').mockResolvedValue(mockedPool as never)
+
+        await delete_nftmarket_user(req as any, res)
+
+        expect(res.json).toHaveBeenCalledWith({message: "Account deleted successfully"})
+    })
+})
