@@ -5,7 +5,7 @@ import { verifyToken } from "../Middlewares/token";
 const authRouter = Router()
 
 authRouter.post('/login', login_nftmarket_user)
-authRouter.get('/checkdetails', verifyToken, checkUserDetails)
+// authRouter.get('/checkdetails', verifyToken, checkUserDetails)
 authRouter.put('/resetPassword', reset_nftmarket_user_password)
 authRouter.post('/logout', verifyToken, logout_nftmarket_user);
 
